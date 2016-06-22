@@ -1,22 +1,14 @@
 'use strict';
 
 var gulp = require('gulp'),
-    ngConstant = require('gulp-ng-constant'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     path = require('path'),
     plumber = require('gulp-plumber'),
-    replace = require('gulp-replace'),
     jshint = require('gulp-jshint');
 
-gulp.task('config-constants', function () {
-  gulp.src('config-constants.json')
-    .pipe(ngConstant())
-    .pipe(replace(/"/g, '\''))
-    // Writes config.js to dist/ folder
-    .pipe(gulp.dest('src/rate-services/constants/'));
-});
+var moduleName = 'rate-services';
 
 // Root directory
 var rootDirectory = path.resolve('./');
@@ -48,20 +40,19 @@ gulp.task('jshint', function () {
 gulp.task('build', function() {
   gulp.src(sourceFiles)
     .pipe(plumber())
-    .pipe(concat('rate-services.js'))
+    .pipe(concat(moduleName + '.js'))
     .pipe(gulp.dest('./dist/'))
     .pipe(uglify())
-    .pipe(rename('rate-services.min.js'))
+    .pipe(rename(moduleName + '.min.js'))
     .pipe(gulp.dest('./dist'));
 });
 
 /**
  * Process
  */
-gulp.task('dist', ['config-constants', 'jshint', 'build']);
+gulp.task('dist', ['jshint', 'build']);
 
 gulp.task('watch', function () {
-  gulp.watch(['./config-constant.json'], ['config-constants']);
   // Watch JavaScript files
   gulp.watch(sourceFiles, ['dist']);
 });

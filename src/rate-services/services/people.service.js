@@ -5,11 +5,13 @@
         .module('rateApp.rate-services')
         .factory('PeopleService', PeopleService);
 
-    PeopleService.$inject = ['$http', 'API_END_POINT'];
+    PeopleService.$inject = ['$http', 'RateEndPointProvider'];
 
-    function PeopleService($http, API_END_POINT) {
+    function PeopleService($http, RateEndPointProvider) {
 
-        var path = API_END_POINT.HOST + ':' + API_END_POINT.PORT + API_END_POINT.PEOPLE_API;
+        var endPoint = RateEndPointProvider.endPoint;
+
+        var path = endPoint.HOST + ':' + endPoint.PORT + endPoint.PEOPLE_API;
         var peoplePath = path + 'people';
         var personPath = path + 'person/';
 

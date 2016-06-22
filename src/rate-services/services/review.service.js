@@ -5,11 +5,13 @@
         .module('rateApp.rate-services')
         .factory('ReviewService', ReviewService);
 
-    ReviewService.$inject = ['$http', 'API_END_POINT'];
+    ReviewService.$inject = ['$http', 'RateEndPointProvider'];
 
-    function ReviewService($http, API_END_POINT) {
+    function ReviewService($http, RateEndPointProvider) {
 
-        var path = API_END_POINT.HOST + ':' + API_END_POINT.PORT + API_END_POINT.REVIEWS_API;
+        var endPoint = RateEndPointProvider.endPoint;
+
+        var path = endPoint.HOST + ':' + endPoint.PORT + endPoint.REVIEWS_API;
         var reviewsPath = path + 'reviews/';
         var reviewPath = path + 'review/';
 

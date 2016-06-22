@@ -6,20 +6,71 @@
     ]);
 })();
 
-(function() {
-    'use strict';
+(function(){
+  'use strict';
 
-    angular.module('rateApp.rate-services-constants', [])
+  angular
+    .module('rateApp.rate-services')
+    .provider('RateAssetsProvider', RateAssetsProvider);
+    
 
-.constant('API_END_POINT', {
-	'HOST': 'http://localhost',
-	'PORT': '3001',
-	'PEOPLE_API': '/apiPeople/',
-	'REVIEWS_API': '/apiReviews/'
-})
+    function RateAssetsProvider() {
 
-;
+      var vm = this;
+      vm.$get = RateAssets;
+      vm.setAssets = setAssets;
+      var _assets = {
+          COMMON_WIDGETS: '', //'scripts/common/widgets',
+          ASSETS_DATA: '',    //'/assets/data',
+          ASSETS_IMG: ''      //'/assets/img'
+      };
+
+      function setAssets(assets) {
+        _assets = assets;
+      }
+
+      function RateAssets() {
+        return {
+          assets: _assets
+        };
+      }
+    }
+
 })();
+
+(function(){
+  'use strict';
+
+  angular
+    .module('rateApp.rate-services')
+    .provider('RateEndPointProvider', RateEndPointProvider);
+    
+
+    function RateEndPointProvider() {
+
+      var vm = this;
+      vm.$get = RateEndPoint;
+      vm.setEndPoint = setEndPoint;
+      var _endPoint = {
+        HOST: '',       //'http://localhost'
+        PORT: '',       //'3001'
+        PEOPLE_API: '', //'/apiPeople/'
+        REVIEWS_API: '' //'/apiReviews/'
+      };
+
+      function setEndPoint(endPoint) {
+        _endPoint = endPoint;
+      }
+
+      function RateEndPoint() {
+        return {
+          endPoint: _endPoint
+        };
+      }
+    }
+
+})();
+
 (function() {
     'use strict';
 
@@ -57,11 +108,13 @@
         .module('rateApp.rate-services')
         .factory('PeopleService', PeopleService);
 
-    PeopleService.$inject = ['$http', 'API_END_POINT'];
+    PeopleService.$inject = ['$http', 'RateEndPointProvider'];
 
-    function PeopleService($http, API_END_POINT) {
+    function PeopleService($http, RateEndPointProvider) {
 
-        var path = API_END_POINT.HOST + ':' + API_END_POINT.PORT + API_END_POINT.PEOPLE_API;
+        var endPoint = RateEndPointProvider.endPoint;
+
+        var path = endPoint.HOST + ':' + endPoint.PORT + endPoint.PEOPLE_API;
         var peoplePath = path + 'people';
         var personPath = path + 'person/';
 
@@ -125,11 +178,13 @@
         .module('rateApp.rate-services')
         .factory('ReviewService', ReviewService);
 
-    ReviewService.$inject = ['$http', 'API_END_POINT'];
+    ReviewService.$inject = ['$http', 'RateEndPointProvider'];
 
-    function ReviewService($http, API_END_POINT) {
+    function ReviewService($http, RateEndPointProvider) {
 
-        var path = API_END_POINT.HOST + ':' + API_END_POINT.PORT + API_END_POINT.REVIEWS_API;
+        var endPoint = RateEndPointProvider.endPoint;
+
+        var path = endPoint.HOST + ':' + endPoint.PORT + endPoint.REVIEWS_API;
         var reviewsPath = path + 'reviews/';
         var reviewPath = path + 'review/';
 
