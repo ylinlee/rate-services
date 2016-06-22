@@ -1,0 +1,12 @@
+{
+  "name": "rateApp.rate-services-constants",
+  "wrap": "commonjs",
+  "constants": {
+    "API_END_POINT": {
+      "HOST": "http://localhost",
+      "PORT": "3001",
+      "PEOPLE_API": "/apiPeople/",
+      "REVIEWS_API": "/apiReviews/"
+    }
+  }
+}
