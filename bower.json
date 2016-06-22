@@ -2,8 +2,7 @@
   "name": "rate-services",
   "description": "rate service angular module",
   "main": [
-    "dist/rate-services.js",
-    "dist/rate-services.min.js"
+    "dist/rate-services.js"
   ],
   "authors": [
     "YCLIN"
