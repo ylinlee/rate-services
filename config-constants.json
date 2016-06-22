@@ -1,6 +1,6 @@
 {
   "name": "rateApp.rate-services-constants",
-  "wrap": "commonjs",
+  "wrap": "(function() {\n    'use strict';\n\n    <%= __ngModule %>\n})();",
   "constants": {
     "API_END_POINT": {
       "HOST": "http://localhost",

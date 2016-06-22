@@ -6,8 +6,10 @@
     ]);
 })();
 
+(function() {
+    'use strict';
 
-module.exports = angular.module('rateApp.rate-services-constants', [])
+    angular.module('rateApp.rate-services-constants', [])
 
 .constant('API_END_POINT', {
 	'HOST': 'http://localhost',
@@ -17,7 +19,7 @@ module.exports = angular.module('rateApp.rate-services-constants', [])
 })
 
 ;
-
+})();
 (function() {
     'use strict';
 
