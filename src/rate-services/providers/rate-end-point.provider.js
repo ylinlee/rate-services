@@ -3,13 +3,13 @@
 
   angular
     .module('rateApp.rate-services')
-    .provider('RateEndPointProvider', RateEndPointProvider);
+    .provider('RateEndPoint', RateEndPointProvider);
     
 
     function RateEndPointProvider() {
 
       var vm = this;
-      vm.$get = RateEndPoint;
+      vm.$get = RateEndPointHelper;
       vm.setEndPoint = setEndPoint;
       var _endPoint = {
         HOST: '',       //'http://localhost'
@@ -22,7 +22,7 @@
         _endPoint = endPoint;
       }
 
-      function RateEndPoint() {
+      function RateEndPointHelper() {
         return {
           endPoint: _endPoint
         };

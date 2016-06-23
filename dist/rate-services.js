@@ -10,13 +10,13 @@
 
   angular
     .module('rateApp.rate-services')
-    .provider('RateAssetsProvider', RateAssetsProvider);
+    .provider('RateAssets', RateAssetsProvider);
     
 
     function RateAssetsProvider() {
 
       var vm = this;
-      vm.$get = RateAssets;
+      vm.$get = RateAssetsHelper;
       vm.setAssets = setAssets;
       var _assets = {
           COMMON_WIDGETS: '', //'scripts/common/widgets',
@@ -28,7 +28,7 @@
         _assets = assets;
       }
 
-      function RateAssets() {
+      function RateAssetsHelper() {
         return {
           assets: _assets
         };
@@ -42,13 +42,13 @@
 
   angular
     .module('rateApp.rate-services')
-    .provider('RateEndPointProvider', RateEndPointProvider);
+    .provider('RateEndPoint', RateEndPointProvider);
     
 
     function RateEndPointProvider() {
 
       var vm = this;
-      vm.$get = RateEndPoint;
+      vm.$get = RateEndPointHelper;
       vm.setEndPoint = setEndPoint;
       var _endPoint = {
         HOST: '',       //'http://localhost'
@@ -61,7 +61,7 @@
         _endPoint = endPoint;
       }
 
-      function RateEndPoint() {
+      function RateEndPointHelper() {
         return {
           endPoint: _endPoint
         };
@@ -107,7 +107,7 @@
         .module('rateApp.rate-services')
         .factory('PeopleService', PeopleService);
 
-    PeopleService.$inject = ['$http', 'RateEndPointProvider'];
+    PeopleService.$inject = ['$http', 'RateEndPoint'];
 
     function PeopleService($http, RateEndPointProvider) {
 
@@ -177,7 +177,7 @@
         .module('rateApp.rate-services')
         .factory('ReviewService', ReviewService);
 
-    ReviewService.$inject = ['$http', 'RateEndPointProvider'];
+    ReviewService.$inject = ['$http', 'RateEndPoint'];
 
     function ReviewService($http, RateEndPointProvider) {
 

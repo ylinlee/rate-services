@@ -5,7 +5,7 @@
         .module('rateApp.rate-services')
         .factory('ReviewService', ReviewService);
 
-    ReviewService.$inject = ['$http', 'RateEndPointProvider'];
+    ReviewService.$inject = ['$http', 'RateEndPoint'];
 
     function ReviewService($http, RateEndPointProvider) {
 

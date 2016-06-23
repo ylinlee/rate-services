@@ -5,7 +5,7 @@
         .module('rateApp.rate-services')
         .factory('PeopleService', PeopleService);
 
-    PeopleService.$inject = ['$http', 'RateEndPointProvider'];
+    PeopleService.$inject = ['$http', 'RateEndPoint'];
 
     function PeopleService($http, RateEndPointProvider) {
 

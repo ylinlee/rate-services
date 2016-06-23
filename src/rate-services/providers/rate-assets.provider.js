@@ -3,13 +3,13 @@
 
   angular
     .module('rateApp.rate-services')
-    .provider('RateAssetsProvider', RateAssetsProvider);
+    .provider('RateAssets', RateAssetsProvider);
     
 
     function RateAssetsProvider() {
 
       var vm = this;
-      vm.$get = RateAssets;
+      vm.$get = RateAssetsHelper;
       vm.setAssets = setAssets;
       var _assets = {
           COMMON_WIDGETS: '', //'scripts/common/widgets',
@@ -21,7 +21,7 @@
         _assets = assets;
       }
 
-      function RateAssets() {
+      function RateAssetsHelper() {
         return {
           assets: _assets
         };
