@@ -11,7 +11,7 @@
 
         var endPoint = RateEndPointProvider.endPoint;
 
-        var path = endPoint.HOST + ':' + endPoint.PORT + endPoint.PEOPLE_API;
+        var path = endPoint.HOST + (endPoint.PORT !== '' ? ':' : '') + endPoint.PORT + endPoint.PEOPLE_API;
         var peoplePath = path + 'people';
         var personPath = path + 'person/';
 
